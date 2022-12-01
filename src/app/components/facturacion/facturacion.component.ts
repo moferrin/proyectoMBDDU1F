@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ClientesService } from 'src/app/services/clientes/clientes.service';
 import { FacturasService } from 'src/app/services/facturas/facturas.service';
 import { ProductosService } from 'src/app/services/productos/productos.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-factureEacion',
@@ -73,7 +74,20 @@ export class FacturacionComponent implements OnInit {
 
   guardar(){
     this.sf.guardar(this.venta).subscribe();
-    location.reload(); 
-
+    Swal.fire({
+      position: 'top',
+      icon: 'success',
+      title: 'Venta realizada',
+      showConfirmButton: false,
+      timer: 1500,
+    });
+    this.venta = {
+      cliente: "",
+      producto:"",
+      cantidad:0,
+      precio:0,
+      productos_detalle: []as any,
+      total: 0
+    };
   }
 }

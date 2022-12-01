@@ -1,5 +1,6 @@
   <div>
     <button
+      style="margin: 10px;"
       type="button"
       class="btn btn-success"
       data-toggle="modal"
@@ -8,6 +9,16 @@
     >
       Nuevo Producto
     </button>
+
+    <button
+    style="margin: 10px;"
+    type="button"
+    class="btn btn-success"
+    data-toggle="modal"
+    data-target="#formModa3"
+  >
+    Gestión Categorias
+  </button>
 
 
     <div class="row">
@@ -23,7 +34,7 @@
         <tbody>
           <tr *ngFor="let producto of productos; let i = index">
             <td>{{producto.nombre}}</td>
-            <td>{{producto.categoria}}</td>
+            <td>{{producto.categoria.nombre}}</td>
             <td>{{producto.precio}}</td>
             <td>{{producto.cantidad}}</td>
             <td>
@@ -70,7 +81,6 @@
         </div>
         <div class="modal-body">
 
-
           <div class="row">
             <div class="col-4">
               <div class="form-group">
@@ -98,8 +108,7 @@
                 <label for="">Categoria</label>
                 <select name="" id="" class="form-control" [(ngModel)]="formProductos.categoria">
                   <option value="">Seleccione</option>
-                  <option value="Fungicidas">Fungicidas</option>
-                  <option value="Venenos">Venenos</option>
+                  <option *ngFor="let categoria of categorias; let i = index" value="{{categoria._id}}">{{categoria.nombre}}</option>
                 </select>
               </div>
             </div>
@@ -112,12 +121,12 @@
                 </select>
               </div>
             </div>
-             <div class="col-4">
+             <!-- <div class="col-4">
               <div class="form-group">
                 <label for="">Imagen</label>
                 <input type="file" class="form-control" (change)="cargarImagen($event)" >
               </div>
-            </div>
+            </div> -->
           </div>
 
         </div>
@@ -132,7 +141,8 @@
   </div>
 
 
-    <div
+   
+  <div
     class="modal fade"
     id="formModal2"
     tabindex="-1"
@@ -143,7 +153,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="IdmodalLabel">Agregar Producto</h5>
+        <h5 class="modal-title" id="IdmodalLabel">Actualizar Producto</h5>
         <button
           type="button"
           class="close"
@@ -183,8 +193,7 @@
               <label for="">Categoria</label>
               <select name="" id="" class="form-control" [(ngModel)]="formProductos.categoria">
                 <option value="">Seleccione</option>
-                <option value="Fungicidas">Fungicidas</option>
-                <option value="Venenos">Venenos</option>
+                <option *ngFor="let categoria of categorias; let i = index" value="{{categoria._id}}">{{categoria.nombre}}</option>
               </select>
             </div>
           </div>
@@ -195,12 +204,6 @@
                 <option value="">Seleccione</option>
                 <option *ngFor="let proveedor of proveedores; let i = index" value="{{proveedor._id}}">{{proveedor.nombre}}</option>
               </select>
-            </div>
-          </div>
-           <div class="col-4">
-            <div class="form-group">
-              <label for="">Imagen</label>
-              <input type="file" class="form-control" (change)="cargarImagen($event)" >
             </div>
           </div>
         </div>
@@ -214,5 +217,73 @@
     </div>
   </div>
   </div>
+
+
+
+  <div
+  class="modal fade"
+  id="formModa3"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="IdmodalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="IdmodalLabel">Categorias</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+        <div class="row">
+          <div class="col-4">
+            <div class="form-group">
+              <label for="">Nombre</label>
+              <input type="text" class="form-control" [(ngModel)]="formCategorias.nombre" >
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <label for=""></label>
+              <td colspan="2"></td>
+              <button type="button" class="btn btn-primary"  (click)="guardarCat()" >Agregar</button>
+            </div>
+          </div>
+
+        </div>
+        
+        <div class="row">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let categoria of categorias; let i = index">
+                <td>{{categoria.nombre}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Cancelar
+        </button>
+        <button type="button" class="btn btn-primary" (click)="guardar() " data-dismiss="modal">Guardar</button>
+      </div> -->
+    </div>
+  </div>
+</div>
 
 </div>
