@@ -1,4 +1,4 @@
-  <div>
+<div>
     <button
       type="button"
       class="btn btn-success"
@@ -6,37 +6,36 @@
       data-target="#formModal"
       (click)="limpiarForm()"
     >
-      Nuevo Producto
+      Nuevo Proveedor
     </button>
-
 
     <div class="row">
       <table class="table">
         <thead>
           <tr>
             <th>Nombre</th>
-            <th>Categoria</th>
-            <th>Precio</th>
-            <th>Cantidad</th>
+            <th>Direccion</th>
+            <th>Telefono</th>
+            <th>Correo</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let producto of productos; let i = index">
-            <td>{{producto.nombre}}</td>
-            <td>{{producto.categoria}}</td>
-            <td>{{producto.precio}}</td>
-            <td>{{producto.cantidad}}</td>
+          <tr *ngFor="let proveedor of proveedores; let i = index">
+            <td>{{proveedor.nombre}}</td>
+            <td>{{proveedor.direccion}}</td>
+            <td>{{proveedor.telefono}}</td>
+            <td>{{proveedor.correo}}</td>
             <td>
               <a
                 data-toggle="modal"
                 data-target="#formModal2"
                 style="cursor: pointer"
-                ><i class="material-icons" (click)="actualizarForm(producto)">edit</i>
+                ><i class="material-icons" (click)="actualizarForm(proveedor)">edit</i>
               </a>
             </td>
             <td>
               <a
-              (click)="eliminar(producto._id)"
+              (click)="eliminar(proveedor._id)"
               style="cursor: pointer"
               ><i class="material-icons">delete</i>
               </a>
@@ -58,7 +57,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="IdmodalLabel">Agregar Producto</h5>
+          <h5 class="modal-title" id="IdmodalLabel">Agregar Proveedor</h5>
           <button
             type="button"
             class="close"
@@ -75,42 +74,31 @@
             <div class="col-4">
               <div class="form-group">
                 <label for="">Nombre</label>
-                <input type="text" class="form-control" [(ngModel)]="formProductos.nombre" >
+                <input type="text" class="form-control" [(ngModel)]="formProveedores.nombre" >
               </div>
             </div>
             <div class="col-4">
               <div class="form-group">
-                <label for="">Precio</label>
-                <input type="text" class="form-control" [(ngModel)]="formProductos.precio" >
+                <label for="">Direccion</label>
+                <input type="text" class="form-control" [(ngModel)]="formProveedores.direccion" >
               </div>
             </div>
             <div class="col-4">
               <div class="form-group">
-                <label for="">Cantidad</label>
-                <input type="text" class="form-control" [(ngModel)]="formProductos.cantidad">
-              </div>
-            </div>
-          </div>
-          
-          <div class="row">
-            <div class="col-4">
-              <div class="form-group">
-                <label for="">Categoria</label>
-                <select name="" id="" class="form-control" [(ngModel)]="formProductos.categoria">
-                  <option value="">Seleccione</option>
-                  <option value="Granos">Granos</option>
-                  <option value="Lacteos">Lacteos</option>
-                </select>
-              </div>
-            </div>
-            <div class="col-4">
-              <div class="form-group">
-                <label for="">Imagen</label>
-                <input type="file" class="form-control" (change)="cargarImagen($event)" >
+                <label for="">Telefono</label>
+                <input type="number" class="form-control" [(ngModel)]="formProveedores.telefono">
               </div>
             </div>
           </div>
 
+          <div class="row">
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Correo</label>
+                <input type="email" class="form-control" [(ngModel)]="formProveedores.correo">
+              </div>
+            </div>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">
@@ -148,44 +136,27 @@
 
         
         <div class="row">
-          <div class="col-4">
-            <div class="form-group" >
-              <label for="">Nombre</label>
-              <input type="text" class="form-control" [(ngModel)]="formProductos.nombre" >
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Nombre</label>
+                <input type="text" class="form-control" [(ngModel)]="formProveedores.nombre" >
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Direccion</label>
+                <input type="text" class="form-control" [(ngModel)]="formProveedores.direccion" >
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Telefono</label>
+                <input type="number" class="form-control" [(ngModel)]="formProveedores.telefono">
+              </div>
             </div>
           </div>
-          <div class="col-4">
-            <div class="form-group">
-              <label for="">Precio</label>
-              <input type="text" class="form-control" [(ngModel)]="formProductos.precio" >
-            </div>
-          </div>
-          <div class="col-4">
-            <div class="form-group">
-              <label for="">Cantidad</label>
-              <input type="text" class="form-control" [(ngModel)]="formProductos.cantidad">
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-4">
-            <div class="form-group">
-              <label for="">Categoria</label>
-              <select name="" id="" class="form-control" [(ngModel)]="formProductos.categoria">
-                <option value="">Seleccione</option>
-                <option value="Granos">Granos</option>
-                <option value="Lacteos">Lacteos</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-4">
-            <div class="form-group">
-              <label for="">Imagen</label>
-              <input type="file" class="form-control" (change)="cargarImagen($event)" >
-            </div>
-          </div>
-        </div>
-      </div>
+
+
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">
           Cancelar

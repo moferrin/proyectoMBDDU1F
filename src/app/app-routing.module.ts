@@ -7,6 +7,7 @@ import { AuthGuard } from './auth.guard';
 import { FacturacionComponent } from './components/facturacion/facturacion.component';
 import { ProductosComponent } from './components/productos/productos.component';
 import { ClientesComponent } from './components/clientes/clientes.component';
+import { ProveedoresComponent } from './components/proveedores/proveedores.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,11 @@ const routes: Routes = [
   {
     path: 'clientes', 
     component: ClientesComponent, 
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'proveedores', 
+    component: ProveedoresComponent, 
     canActivate: [AuthGuard]
   },
   {

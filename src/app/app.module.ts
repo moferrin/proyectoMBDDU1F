@@ -12,7 +12,7 @@ import { TokenInterceptorService } from './services/auth/token-interceptor.servi
 import { FacturacionComponent } from './components/facturacion/facturacion.component';
 import { ProductosComponent } from './components/productos/productos.component';
 import { ClientesComponent } from './components/clientes/clientes.component';
-import { ProveedoresComponent } from './components/proveedores/proveedores/proveedores.component';
+import { ProveedoresComponent } from './components/proveedores/proveedores.component';
 
 @NgModule({
   declarations: [
