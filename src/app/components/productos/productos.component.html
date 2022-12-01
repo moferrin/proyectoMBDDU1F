@@ -98,12 +98,21 @@
                 <label for="">Categoria</label>
                 <select name="" id="" class="form-control" [(ngModel)]="formProductos.categoria">
                   <option value="">Seleccione</option>
-                  <option value="Granos">Granos</option>
-                  <option value="Lacteos">Lacteos</option>
+                  <option value="Fungicidas">Fungicidas</option>
+                  <option value="Venenos">Venenos</option>
                 </select>
               </div>
             </div>
             <div class="col-4">
+              <div class="form-group">
+                <label for="">Proveedor</label>
+                <select name="" id="" class="form-control" [(ngModel)]="formProductos.proveedor">
+                  <option value="">Seleccione</option>
+                  <option *ngFor="let proveedor of proveedores; let i = index" value="{{proveedor._id}}">{{proveedor.nombre}}</option>
+                </select>
+              </div>
+            </div>
+             <div class="col-4">
               <div class="form-group">
                 <label for="">Imagen</label>
                 <input type="file" class="form-control" (change)="cargarImagen($event)" >
@@ -123,18 +132,18 @@
   </div>
 
 
-  <div
-  class="modal fade"
-  id="formModal2"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="IdmodalLabel"
-  aria-hidden="true"
->
+    <div
+    class="modal fade"
+    id="formModal2"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="IdmodalLabel"
+    aria-hidden="true"
+  >
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="IdmodalLabel">Editar Producto</h5>
+        <h5 class="modal-title" id="IdmodalLabel">Agregar Producto</h5>
         <button
           type="button"
           class="close"
@@ -146,10 +155,10 @@
       </div>
       <div class="modal-body">
 
-        
+
         <div class="row">
           <div class="col-4">
-            <div class="form-group" >
+            <div class="form-group">
               <label for="">Nombre</label>
               <input type="text" class="form-control" [(ngModel)]="formProductos.nombre" >
             </div>
@@ -167,18 +176,28 @@
             </div>
           </div>
         </div>
+        
         <div class="row">
           <div class="col-4">
             <div class="form-group">
               <label for="">Categoria</label>
               <select name="" id="" class="form-control" [(ngModel)]="formProductos.categoria">
                 <option value="">Seleccione</option>
-                <option value="Granos">Granos</option>
-                <option value="Lacteos">Lacteos</option>
+                <option value="Fungicidas">Fungicidas</option>
+                <option value="Venenos">Venenos</option>
               </select>
             </div>
           </div>
           <div class="col-4">
+            <div class="form-group">
+              <label for="">Proveedor</label>
+              <select name="" id="" class="form-control" [(ngModel)]="formProductos.proveedor">
+                <option value="">Seleccione</option>
+                <option *ngFor="let proveedor of proveedores; let i = index" value="{{proveedor._id}}">{{proveedor.nombre}}</option>
+              </select>
+            </div>
+          </div>
+           <div class="col-4">
             <div class="form-group">
               <label for="">Imagen</label>
               <input type="file" class="form-control" (change)="cargarImagen($event)" >
@@ -194,6 +213,6 @@
       </div>
     </div>
   </div>
-</div>
+  </div>
 
 </div>

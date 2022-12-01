@@ -40,7 +40,7 @@ export class ProveedoresComponent implements OnInit {
       Swal.fire({
         position: 'top',
         icon: 'success',
-        title: 'Nuevo cliente agregado',
+        title: 'Nuevo proveedor agregado',
         showConfirmButton: false,
         timer: 1500,
       });

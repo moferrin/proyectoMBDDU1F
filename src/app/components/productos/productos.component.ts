@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductosService } from '../../services/productos/productos.service';
 import Swal from 'sweetalert2';
+import { ProveedoresService } from 'src/app/services/proveedores/proveedores.service';
 
 @Component({
   selector: 'app-productos',
@@ -15,14 +16,18 @@ export class ProductosComponent implements OnInit {
     categoria : "",
     precio : "",
     cantidad : 0,
+    proveedor:"",
     //imagen : ""
   }
 
   imagen !: File;
 
   productos!: Array<any>;
+  proveedores!: Array<any>;
 
-  constructor(private sp : ProductosService) { }
+  constructor(
+    private sp : ProductosService,
+    private sprov : ProveedoresService) { }
 
   cargarImagen(img : any){
     this.imagen = img.target.files[0];
@@ -35,6 +40,11 @@ export class ProductosComponent implements OnInit {
   listar(){
     this.sp.listar().subscribe(data => {
       this.productos = data;
+    }, err => {
+
+    });
+    this.sprov.listar().subscribe(data => {
+      this.proveedores = data;
     }, err => {
 
     });
@@ -105,6 +115,7 @@ export class ProductosComponent implements OnInit {
       categoria : "",
       precio : "",
       cantidad : 0,
+      proveedor:"",
     }
   }
 

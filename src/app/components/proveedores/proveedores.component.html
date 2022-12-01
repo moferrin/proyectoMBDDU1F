@@ -122,7 +122,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="IdmodalLabel">Editar Producto</h5>
+        <h5 class="modal-title" id="IdmodalLabel">Editar Proveedor</h5>
         <button
           type="button"
           class="close"
@@ -152,6 +152,15 @@
               <div class="form-group">
                 <label for="">Telefono</label>
                 <input type="number" class="form-control" [(ngModel)]="formProveedores.telefono">
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Correo</label>
+                <input type="email" class="form-control" [(ngModel)]="formProveedores.correo" >
               </div>
             </div>
           </div>
