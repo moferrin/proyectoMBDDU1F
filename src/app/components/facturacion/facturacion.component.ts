@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientesService } from 'src/app/services/clientes/clientes.service';
+import { DatosService } from 'src/app/services/datos/datos.service';
 import { FacturasService } from 'src/app/services/facturas/facturas.service';
 import { ProductosService } from 'src/app/services/productos/productos.service';
 import Swal from 'sweetalert2';
@@ -14,7 +15,17 @@ export class FacturacionComponent implements OnInit {
   clientes !:Array<any>;
   productos !:Array<any>;
 
+  constructor(
+    private sc:ClientesService,
+    private sp:ProductosService,
+    private sf:FacturasService,
+    public datosS:DatosService,
+    ){
+      console.log(datosS.getUser())
+    }
+
   venta = {
+    usuario:this.datosS.getUser(),
     cliente: "",
     producto:"",
     cantidad:0,
@@ -22,12 +33,6 @@ export class FacturacionComponent implements OnInit {
     productos_detalle: []as any,
     total: 0
   };
-  
-  constructor(
-    private sc:ClientesService,
-    private sp:ProductosService,
-    private sf:FacturasService
-    ){}
 
   ngOnInit(): void {
     this.sc.listar().subscribe(data =>{
@@ -82,6 +87,7 @@ export class FacturacionComponent implements OnInit {
       timer: 1500,
     });
     this.venta = {
+      usuario:this.datosS.getUser(),
       cliente: "",
       producto:"",
       cantidad:0,

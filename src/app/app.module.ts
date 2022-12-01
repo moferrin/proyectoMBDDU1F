@@ -13,6 +13,7 @@ import { FacturacionComponent } from './components/facturacion/facturacion.compo
 import { ProductosComponent } from './components/productos/productos.component';
 import { ClientesComponent } from './components/clientes/clientes.component';
 import { ProveedoresComponent } from './components/proveedores/proveedores.component';
+import { DatosService } from './services/datos/datos.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { ProveedoresComponent } from './components/proveedores/proveedores.compo
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [AuthGuard, {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true}],
+  providers: [DatosService,AuthGuard, {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
