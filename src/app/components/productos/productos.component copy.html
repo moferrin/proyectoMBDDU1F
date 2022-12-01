@@ -1,0 +1,184 @@
+  <div>
+    <button
+      type="button"
+      class="btn btn-success"
+      data-toggle="modal"
+      data-target="#formModal"
+    >
+      Nuevo Producto
+    </button>
+
+
+    <div class="row">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Categoria</th>
+            <th>Precio</th>
+            <th>Cantidad</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let producto of productos; let i = index">
+            <td>{{producto.nombre}}</td>
+            <td>{{producto.categoria}}</td>
+            <td>{{producto.precio}}</td>
+            <td>{{producto.cantidad}}</td>
+            <td>
+              <a
+                data-toggle="modal"
+                data-target="#formModal2"
+                style="cursor: pointer"
+                ><i class="material-icons" >Editar</i>
+              </a>
+            </td>
+            <td>
+              <a
+              (click)="eliminar(producto._id)"
+              style="cursor: pointer"
+              ><i class="material-icons">Eliminar</i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  
+  
+    <div
+    class="modal fade"
+    id="formModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="IdmodalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="IdmodalLabel">Agregar Producto</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+
+          <div class="row">
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Nombre</label>
+                <input type="text" class="form-control" [(ngModel)]="formProductos.nombre" >
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Precio</label>
+                <input type="text" class="form-control" [(ngModel)]="formProductos.precio" >
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Cantidad</label>
+                <input type="text" class="form-control" [(ngModel)]="formProductos.cantidad">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Categoria</label>
+                <select name="" id="" class="form-control" [(ngModel)]="formProductos.categoria">
+                  <option value="">Seleccione</option>
+                  <option value="Granos">Granos</option>
+                  <option value="Lacteos">Lacteos</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                <label for="">Imagen</label>
+                <input type="file" class="form-control" (change)="cargarImagen($event)" >
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Cancelar
+          </button>
+          <button type="button" class="btn btn-primary" (click)="guardar() " data-dismiss="modal">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- 
+  
+  <div
+    class="modal fade"
+    id="formModal2"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="IdmodalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="IdmodalLabel">Editar Película</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form #peliculasForm="ngForm">
+            <div class="mb-3">
+              <div class="mb-3">
+                <div class="input-group">      
+                  <input name="code" class="form-control" type="hidden" name="id_pelicula" #id_pelicula="ngModel" [(ngModel)]="peliculasService.selectedPeliculas.id_pelicula"/>
+                </div>
+              </div>
+              <label>Nombre</label>
+              <div class="input-group">
+                <input name="code" class="form-control" name="nombreP" #nombreP="ngModel" [(ngModel)]="peliculasService.selectedPeliculas.nombreP"/>
+              </div>
+            </div>
+            <label for="">Categoría</label>
+            <div class="mb-4">
+              <select class="form-select" name="categoria" #categoria="ngModel" [(ngModel)]="peliculasService.selectedPeliculas.categoria">
+                <option value="" disabled>Elija una categoría</option>
+                <option
+                  value="{{ categorias }}"
+                  *ngFor="let categorias of categorias"
+                >
+                  {{ categorias }}
+                </option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Cancelar
+          </button>
+          <button type="button" class="btn btn-primary" (click)="createPelicula(peliculasForm)">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   -->
+  </div>
