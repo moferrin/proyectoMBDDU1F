@@ -8,6 +8,7 @@ import { FacturacionComponent } from './components/facturacion/facturacion.compo
 import { ProductosComponent } from './components/productos/productos.component';
 import { ClientesComponent } from './components/clientes/clientes.component';
 import { ProveedoresComponent } from './components/proveedores/proveedores.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 
 const routes: Routes = [
@@ -39,7 +40,11 @@ const routes: Routes = [
   {
     path: 'signin', 
     component: SigninComponent
-  }
+  },
+  {
+    path: 'signup', 
+    component: SignupComponent
+  }  
 ];
 
 @NgModule({
