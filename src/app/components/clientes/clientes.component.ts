@@ -1,52 +1,43 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductosService } from '../../services/productos/productos.service';
+import { ClientesService } from 'src/app/services/clientes/clientes.service';
 import Swal from 'sweetalert2';
 
 @Component({
-  selector: 'app-productos',
-  templateUrl: './productos.component.html',
-  styleUrls: ['./productos.component.scss']
+  selector: 'app-clientes',
+  templateUrl: './clientes.component.html',
+  styleUrls: ['./clientes.component.scss']
 })
-export class ProductosComponent implements OnInit {
+export class ClientesComponent implements OnInit{
 
-  formProductos = {
-    idP:"",
+  formClientes = {
+    idC:"",
     nombre: "",
-    categoria : "",
-    precio : "",
-    cantidad : 0,
-    //imagen : ""
+    direccion : "",
+    telefono : ""
   }
 
-  imagen !: File;
-
-  productos!: Array<any>;
-
-  constructor(private sp : ProductosService) { }
-
-  cargarImagen(img : any){
-    this.imagen = img.target.files[0];
-  }
+  clientes!: Array<any>;
+  
+  constructor(private sc: ClientesService) { }
 
   ngOnInit() {
     this.listar();
   }
 
   listar(){
-    this.sp.listar().subscribe(data => {
-      this.productos = data;
+    this.sc.listar().subscribe(data => {
+      this.clientes = data;
     }, err => {
-
     });
   }
 
   guardar(){
-    this.sp.guardar(this.formProductos)
+    this.sc.guardar(this.formClientes)
     .subscribe(data => {
       Swal.fire({
         position: 'top',
         icon: 'success',
-        title: 'Nuevo producto agregado',
+        title: 'Nuevo cliente agregado',
         showConfirmButton: false,
         timer: 1500,
       });
@@ -57,7 +48,7 @@ export class ProductosComponent implements OnInit {
     })
   }
 
-  eliminar(id_p: string){
+  eliminar(id_c: string){
     Swal.fire({
       title: '¿Estás seguro?',
       text: 'Este registro se eliminará completamente',
@@ -70,7 +61,7 @@ export class ProductosComponent implements OnInit {
       cancelButtonText: 'Cancelar',
     }).then((result) => {
       if (result.isConfirmed) {
-        this.sp.eliminar(id_p).subscribe((res) => {
+        this.sc.eliminarCliente(id_c).subscribe((res) => {
           Swal.fire('Eliminado!', 'Registro eliminado', 'success');
           this.listar();
         });
@@ -79,8 +70,8 @@ export class ProductosComponent implements OnInit {
   }
 
   actualizarProducto(){
-    console.log(this.formProductos)
-    this.sp.editarProducto(this.formProductos)
+    console.log(this.formClientes)
+    this.sc.editarCliente(this.formClientes)
     .subscribe(data => {
       Swal.fire({
         position: 'top',
@@ -95,18 +86,15 @@ export class ProductosComponent implements OnInit {
 
   actualizarForm(producto:any){
     console.log(producto);
-    this.formProductos = producto;
+    this.formClientes = producto;
   }
 
   limpiarForm(){
-    this.formProductos={
-      idP:"",
+    this.formClientes={
+      idC:"",
       nombre: "",
-      categoria : "",
-      precio : "",
-      cantidad : 0,
+      direccion : "",
+      telefono : ""
     }
   }
-
-
 }

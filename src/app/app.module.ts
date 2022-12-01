@@ -11,6 +11,8 @@ import { SignupComponent } from './components/signup/signup.component';
 import { TokenInterceptorService } from './services/auth/token-interceptor.service';
 import { FacturacionComponent } from './components/facturacion/facturacion.component';
 import { ProductosComponent } from './components/productos/productos.component';
+import { ClientesComponent } from './components/clientes/clientes.component';
+import { ProveedoresComponent } from './components/proveedores/proveedores/proveedores.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { ProductosComponent } from './components/productos/productos.component';
     SignupComponent,
     FacturacionComponent,
     ProductosComponent,
+    ClientesComponent,
+    ProveedoresComponent,
   ],
   imports: [
     BrowserModule,

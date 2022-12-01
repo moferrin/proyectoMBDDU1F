@@ -6,6 +6,7 @@ import { SigninComponent } from './components/signin/signin.component';
 import { AuthGuard } from './auth.guard';
 import { FacturacionComponent } from './components/facturacion/facturacion.component';
 import { ProductosComponent } from './components/productos/productos.component';
+import { ClientesComponent } from './components/clientes/clientes.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,11 @@ const routes: Routes = [
   {
     path: 'productos', 
     component: ProductosComponent, 
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'clientes', 
+    component: ClientesComponent, 
     canActivate: [AuthGuard]
   },
   {
