@@ -20,7 +20,7 @@
           <a class="nav-link" routerLink="/proveedores" routerLinkActive="active">Proveedores</a>
         </li>
         <li class="nav-item dropdown" >
-          <a class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" routerLinkActive="active">Reportes</a>
+          <!-- <a class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" routerLinkActive="active">Reportes</a> -->
           <ul class="dropdown-menu">
             <li class="dropdown-item">
               <!-- <a routerLink="/reporte1">Reporte1</a> -->
@@ -43,10 +43,10 @@
       <ul class="navbar-nav ml-auto">
         <ng-container *ngIf="!authService.loggedIn(); else loggedIn">
           <li class="nav-item">
-            <a class="nav-link" routerLink="/signin" routerLinkActive="active">SignIn</a>
+            <a class="nav-link" routerLink="/signin" routerLinkActive="active">Ingresar</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/signup" routerLinkActive="active">SignUp</a>
+            <a class="nav-link" routerLink="/signup" routerLinkActive="active">Registrarse</a>
           </li>
         </ng-container >
         <ng-template #loggedIn>

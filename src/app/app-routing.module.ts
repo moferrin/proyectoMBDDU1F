@@ -9,12 +9,12 @@ import { ProductosComponent } from './components/productos/productos.component';
 import { ClientesComponent } from './components/clientes/clientes.component';
 import { ProveedoresComponent } from './components/proveedores/proveedores.component';
 import { SignupComponent } from './components/signup/signup.component';
-
+import { Reporte1Component } from './components/reportes/reporte1/reporte1.component';
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/facturacion',
+    redirectTo: '/signin',
     pathMatch: 'full'
   },
   {
@@ -35,6 +35,11 @@ const routes: Routes = [
   {
     path: 'proveedores', 
     component: ProveedoresComponent, 
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'reporte1', 
+    component: Reporte1Component, 
     canActivate: [AuthGuard]
   },
   {

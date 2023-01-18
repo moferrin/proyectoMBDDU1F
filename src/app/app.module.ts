@@ -14,6 +14,8 @@ import { ProductosComponent } from './components/productos/productos.component';
 import { ClientesComponent } from './components/clientes/clientes.component';
 import { ProveedoresComponent } from './components/proveedores/proveedores.component';
 import { DatosService } from './services/datos/datos.service';
+import { Reporte1Component } from './components/reportes/reporte1/reporte1.component';
+import { GatosComponent } from './components/gatos/gatos.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { DatosService } from './services/datos/datos.service';
     ProductosComponent,
     ClientesComponent,
     ProveedoresComponent,
+    Reporte1Component,
+    GatosComponent,
   ],
   imports: [
     BrowserModule,
